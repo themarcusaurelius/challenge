@@ -1,0 +1,26 @@
+{
+  "name": "justuno-coding-challenge-v2",
+  "version": "1.0.0",
+  "description": "Goal\r You will be setting up an API that receives requests to access a \"client's\" Klaviyo information.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/themarcusaurelius/challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JustunoCom/justuno-coding-challenge-V2/issues"
+  },
+  "homepage": "https://github.com/JustunoCom/justuno-coding-challenge-V2#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.4",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {}
+}
