@@ -1,49 +1,103 @@
 # challenge
 
-Goal
-You will be setting up an API that receives requests to access a "client's" Klaviyo information.
+## Start the server
 
-(ie. You will be accessing your own Klaviyo account for the purposes of this challenge)
+To start the server, open up the repo in the terminal and input:
 
-The routes you are writing that a client wants access to are:
+```
+nodemon server.js
+```
 
-A route to get a specific list
-A route to get all lists
-A route to create a new list
-A route to subscribe a user to a list
-Implement middleware
-You will need to use the documenation for Klaviyo's List V2 API: https://www.klaviyo.com/docs/api/v2/lists
+## Getting a single list: 
 
-Set up
-There is no frontend dev work required in this challenge!
-I would recommend downloading and using Postman to ping your server and test the routes.
-To begin with this coding challenge you will need to set up a Klaviyo account here: https://www.klaviyo.com
+To get single list, in the browser go to the url endpoint:
 
-Once you have an account and are on your dashboard, go to the top right corner and go to Account. From Account select Settings and create an API key for use during this coding challenge.
+```
+localhost:3000/lists
+```
+Refreshing the page will refresh the request. The list information will be found in the broswer as well as the terminal. The output will be in JSON format and look similar to this:
 
-With this API key generated you are now ready to begin the coding challenge.
+```
+{
+  "updated": "2019-04-16T18:42:30Z",
+  "list_name": "marksList",
+  "folder_name": "",
+  "created": "2019-04-15T15:36:26Z"
+}
+```
 
-Don't forget to npm install the packages.
+## Getting all lists:
 
-Within these files you will see I have already set up a basic server for you. If you run npm start you will see it will start up a server listening on your localhost port 3000.
+To get all lists, in the browser go to the url endpoint: 
 
-Notes
-From here you should begin completing the specified routes above.
+```
+localhost:3000/lists/all
+```
+Refreshing the page will refresh the request. The list information will be found in the broswer as well as the terminal. The output will be in JSON format and look similar to this:
 
-To begin you can hardcode your API key into the individual requests as seen in the Klaviyo docs, but later will be required to write middleware that appends the api-key to the request for access in each route.
+```
+[
+  {
+    "list_name": "2ndnewList",
+    "list_id": "HDf9U8"
+  },
+  {
+    "list_name": "newList",
+    "list_id": "HiCxYA"
+  },
+  {
+    "list_name": "marksThirdList",
+    "list_id": "HkPPRu"
+  },
+  {
+    "list_name": "2ndnewList",
+    "list_id": "LKTimk"
+  },
+  {
+    "list_name": "marksList",
+    "list_id": "MuQTUE"
+  },
+  {
+    "list_name": "3rdnewList",
+    "list_id": "NKVMe2"
+  },
+  {
+    "list_name": "marksSecondList",
+    "list_id": "P2QvFW"
+  },
+  {
+  "list_name": "3rdnewList",
+  "list_id": "PZXCvM"
+  }
+]
+```
 
-The get/lists route has a basic structure as an example.
+## Creating a list:
 
-You will notice that the request module has been promisified. I would like you to use async/await everywhere applicable. Promises are permitted, but do not use callbacks. Callbacks are only acceptable in your route declaration as seen in the get/lists route example.
+In the code, find the file `klaviyo-get`, change the input for `list_name` to whatever you want to name the list. Then, in the broswer go the url endpoint: 
 
-You will need to configure the route-proxy for your post and subscription routes.
+```
+localhost:3000/lists/create
+```
+Refresh the page if you need to and the list Id for the new list will appear. The output will be in JSON format and look similar to this:
 
-Don't forget to use the middleware for easy access to your api key, instead of hardcoding it in every route! This can be done as a refactor after you have gotten the basics working.
+```
+{
+  "list_id": "HZE96n"
+}
+```
 
-With each request to the subscribe endpoint you should pass a key called 'resub'. This key can contain 2 values, 'any' and 'list'. If the resub value is set to 'list' within the subscribe route you should check the list using the check list subscriptions klaviyo endpoint before subscribing the user. If they are already on the list, reject the subscription request, if not continue and subscribe them to the list.
-Example request bodies for subscribe
-Resub any example:
-json: { email: 'someone@gmail.com', gender: 'non-binary', favoriteColor: 'blue', resub: 'any' }
+## Subscribing to a list
 
-Resub list example:
-json: { email: 'someone222@gmail.com', gender: 'female', favoriteColor: 'black', resub: 'list' }
+To subscribe to a new list, find the file `klaviyo-subscription` and enter your criteria. You must at least have an email to subscribe. After inputting your email, go to the url endpoint: 
+
+```
+localhost:3000/lists/subscribe
+```
+Refresh the page if you need to and then you will get a status report 200 (Ok) if the request went through. Then check your email for a link to confirm your subscription. 
+
+
+
+
+
+
