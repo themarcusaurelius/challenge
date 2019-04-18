@@ -20,21 +20,5 @@ router.get('/lists', async (req, res) => {
     res.send(getLists.body)
     console.log(getLists.body)
 })
-/* //Get All Lists
-router.get('/lists/all', async (req, res) => {
-    const queryURL = `https://a.klaviyo.com/api/v2/lists?api_key=${req.apiKey}`
-    
-    const getLists = await getAsync({
-        url: queryURL, 
-        body: res,
-        json: true
-    });
-
-    res.send(getLists.body)
-    console.log(getLists.body)
-})  */
-
-
-
 
 module.exports = router
