@@ -74,7 +74,7 @@ Refreshing the page will refresh the request. The list information will be found
 
 ## Creating a list:
 
-In the code, find the file `klaviyo-get`, change the input for whatever you want to name the list. Then, in the broswer go the url endpoint: 
+In the code, find the file `klaviyo-get`, change the input for `list_name` to whatever you want to name the list. Then, in the broswer go the url endpoint: 
 
 ```
 localhost:3000/lists/create
