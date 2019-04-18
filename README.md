@@ -19,10 +19,10 @@ Refreshing the page will refresh the request. The list information will be found
 
 ```
 {
-"updated": "2019-04-16T18:42:30Z",
-"list_name": "marksList",
-"folder_name": "",
-"created": "2019-04-15T15:36:26Z"
+  "updated": "2019-04-16T18:42:30Z",
+  "list_name": "marksList",
+  "folder_name": "",
+  "created": "2019-04-15T15:36:26Z"
 }
 ```
 
