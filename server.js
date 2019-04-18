@@ -3,15 +3,23 @@ const app = express()
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const RouteProxy = require('./routes/route-proxy')
- 
+const morgan = require('morgan')
+const lists = require('./routes/klaviyo/klaviyo-get')
+const create = require('./routes/klaviyo//klaviyo-post')
+const subscribe = require('./routes/klaviyo/klaviyo-subscription')
+const all = require('./routes/klaviyo/klaviyo-getAll')
+const addAPIKEY = require('./helpers/middleware');
+
 app.disable('x-powered-by')
 app.set('etag', false)
 app.get('/cf', (req, res) => res.sendStatus(200))
+
  
 app.set('trust proxy', 'loopback')
 app.disable('x-powered-by')
 app.set('etag', false)
 app.use(cookieParser())
+app.use(morgan('dev'));
  
 app.use(bodyParser.urlencoded({ limit: '256kb', extended: true }))
  
@@ -41,13 +49,19 @@ app.use('/api/*', (req, res, next) => {
     next();
   }
 });
- 
+
+//Middleware
+app.use(addAPIKEY);
+
+//Routes 
 app.use('/api/integrations', RouteProxy)
+app.use('/', lists)
+app.use('/lists', create, subscribe, all)
  
-const PORT = 3000
+const PORT = process.env.PORT || 3000
  
 app.listen(PORT, () => {
   console.log(`Server Started on Port: ${PORT}!`)
 })
- 
+
 module.exports = { server: app }

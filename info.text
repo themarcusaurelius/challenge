@@ -1,0 +1,16 @@
+request({
+        url: 'https://a.klaviyo.com/api/v2/list/MuQTUE',
+        qs : {
+            api_key: 'pk_79e1898a80945d2b8225f6f25cb92faa4c'
+        },
+        function(error, response, body) {
+            if (!error && response.statusCode === 200) {
+              console.log(body);
+              console.log('test')
+              res.json(body);
+            } else {
+              res.json(error);
+              console.log('bad test')
+            }
+        }
+    })

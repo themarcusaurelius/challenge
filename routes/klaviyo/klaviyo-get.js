@@ -2,18 +2,38 @@ const express = require('express');
 const router = express.Router();
 const promisify = require('util').promisify;
 const request = promisify(require('request'));
- 
-// Complete the backend route to retreive lists using the Klaviyo List V2 API
-// As an example to get you started...
- 
-// USE ASYNC/AWAIT THROUGHOUT, EXCEPT WHEN SETTING UP THE INITIAL ROUTE AS SEEN BELOW
- 
-router.get('/lists', async(req, res) => {
-   
+const [getAsync, postAsync] = [request.get, request.post].map(promisify);
+
+//Get One List
+router.get('/lists', async (req, res) => {
+    const api_key = req.apiKey
+    const list_id = 'MuQTUE'
+    const queryURL = `https://a.klaviyo.com/api/v2/list/${list_id}?api_key=${api_key}`
+    
+    const getLists = await getAsync({
+        url: queryURL, 
+        body: res,
+        json: true
+    });
+
+    res.send(getLists.body)
+    console.log(getLists.body)
 })
- 
- 
-// Write a route to retreive a single list using the Klaviyo List V2 API
- 
- 
+/* //Get All Lists
+router.get('/lists/all', async (req, res) => {
+    const queryURL = `https://a.klaviyo.com/api/v2/lists?api_key=${req.apiKey}`
+    
+    const getLists = await getAsync({
+        url: queryURL, 
+        body: res,
+        json: true
+    });
+
+    res.send(getLists.body)
+    console.log(getLists.body)
+})  */
+
+
+
+
 module.exports = router
