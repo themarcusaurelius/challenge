@@ -7,10 +7,10 @@ const [getAsync, postAsync] = [request.get, request.post].map(promisify);
 // Write a route to subscribe a user to a list using the Klaviyo List V2 API
 router.get('/subscribe', async (req, res) => {
     const api_key = req.apiKey
-    const email = 'markmayfieldrealtor@gmail.com'
+    const email = 'mark.mayfieldrealtor@gmail.com'
     const gender = 'male'
     const resub = 'list'
-    const favoriteColor = 'green'
+    const favoriteColor = 'lazer lemon'
     const queryURL = 'https://a.klaviyo.com/api/v2/list/MuQTUE/subscribe'
     
     const listSubscribe = await postAsync({
@@ -28,8 +28,8 @@ router.get('/subscribe', async (req, res) => {
             }
     });
 
-    res.send(listSubscribe.status)
-    console.log(listSubscribe.state)
+    res.send(listSubscribe.statusCode)
+    console.log(listSubscribe.statusCode)
     
 }) 
  
