@@ -8,10 +8,11 @@ const [getAsync, postAsync] = [request.get, request.post].map(promisify);
 router.get('/lists', async (req, res) => {
     const api_key = req.apiKey
     const list_id = 'MuQTUE'
-    const queryURL = `https://a.klaviyo.com/api/v2/list/${list_id}?api_key=${api_key}`
+    const queryURL = `https://a.klaviyo.com/api/v2/list/${list_id}`
     
     const getLists = await getAsync({
-        url: queryURL, 
+        url: queryURL,
+        qs: { api_key: api_key },
         body: res,
         json: true
     });
