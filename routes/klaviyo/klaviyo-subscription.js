@@ -8,7 +8,7 @@ const [getAsync, postAsync] = [request.get, request.post].map(promisify);
 router.get('/subscribe', async (req, res) => {
     const api_key = req.apiKey;
     const list_id = 'MuQTUE'
-    const userEmail = 'm.ark.may.field.16@gmail.com';
+    const userEmail = 'markmayfield16@gmail.com';
     const gender = 'boy';
     const list = 'list';
     const favoriteColor = 'radical red';
@@ -24,8 +24,8 @@ router.get('/subscribe', async (req, res) => {
     const user = checkSubscriber.body
     
     if (user.length !== 0) {
-        res.send(checkSubscriber.body)
-        console.log(checkSubscriber.body)
+        res.send(user[0])
+        console.log(user[0])
     } else {
         const subscribeUser = await postAsync({
             url: queryURL,
