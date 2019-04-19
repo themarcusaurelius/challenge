@@ -1,5 +1,5 @@
 {
-  "name": "justuno-coding-challenge-v2",
+  "name": "mark-coding-challenge",
   "version": "1.0.0",
   "description": "Goal\r You will be setting up an API that receives requests to access a \"client's\" Klaviyo information.",
   "main": "server.js",
@@ -17,7 +17,6 @@
   },
   "homepage": "https://github.com/JustunoCom/justuno-coding-challenge-V2#readme",
   "dependencies": {
-    "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.3",
     "express": "^4.16.4",
