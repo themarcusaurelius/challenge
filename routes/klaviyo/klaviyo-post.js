@@ -15,7 +15,6 @@ router.get('/create', async (req, res) => {
         form: { api_key: api_key, list_name: list_name },
         json: true
     });
-
     console.log(createList.body)
     res.send(createList.body)
 })

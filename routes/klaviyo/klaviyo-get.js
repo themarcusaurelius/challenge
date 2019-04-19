@@ -16,7 +16,6 @@ router.get('/lists', async (req, res) => {
         body: res,
         json: true
     });
-
     res.send(getLists.body)
     console.log(getLists.body)
 })
